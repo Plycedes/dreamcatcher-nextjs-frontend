@@ -1,4 +1,8 @@
+"use client";
+
 import "@styles/globals.css";
+import { MoralisProvider } from "react-moralis";
+import Header from "@components/Header";
 
 export const metadata = {
     title: "One Piece",
@@ -7,11 +11,16 @@ export const metadata = {
 
 const RootLayout = ({ children }) => {
     return (
-        <html Lang="en">
+        <html lang="en">
             <body>
-                <div className="main">
-                    <main className="app">{children}</main>
-                </div>
+                <MoralisProvider initializeOnMount={false}>
+                    <div className="main">
+                        <main className="app">
+                            <Header />
+                            {children}
+                        </main>
+                    </div>
+                </MoralisProvider>
             </body>
         </html>
     );
